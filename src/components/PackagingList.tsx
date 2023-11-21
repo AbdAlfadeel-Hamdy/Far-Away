@@ -31,16 +31,20 @@ const PackagingList: React.FC<PackagingListProps> = ({
 
   return (
     <div className='list'>
-      <ul>
-        {sortedItems.map((item) => (
-          <PackagingItem
-            key={item.id}
-            item={item}
-            onDeleteItem={onDeleteItem}
-            onToggleItem={onToggleItem}
-          />
-        ))}
-      </ul>
+      {sortedItems.length ? (
+        <ul>
+          {sortedItems.map((item) => (
+            <PackagingItem
+              key={item.id}
+              item={item}
+              onDeleteItem={onDeleteItem}
+              onToggleItem={onToggleItem}
+            />
+          ))}
+        </ul>
+      ) : (
+        <div></div>
+      )}
       <div className='actions'>
         <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
           <option value='input'>Sort by input order</option>
